@@ -1,0 +1,5 @@
+{"id":"yt5fiesc","name":"Paris","created_at":"2020-07-28 07:37:14 +0600"}
+{"id":"r4q0vu5y","name":"Milan","created_at":"2020-07-28 07:37:19 +0600"}
+{"id":"zsq67cgw","name":"Frankfurt","created_at":"2020-07-28 07:37:27 +0600"}
+{"id":"bijlcb69","name":"London","created_at":"2020-07-28 07:37:41 +0600"}
+{"id":"e1ghi8nb","name":"astana","created_at":"2020-07-31 06:12:26 +0600"}

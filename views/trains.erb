@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Railway application</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  </head>
+  <body>
+    <h3>Create train</h3>
+    <form action='trains' method='post'>
+      <div>
+        <label for="type">Train type:</label>
+        <select id="type" name="type">
+          <option value="Passenger">Passenger</option>
+          <option value="Cargo">Cargo</option>>
+        </select>
+      </div><br />
+
+      <div>
+        <label for='number'>Train number:</label>
+        <input type='text' id='number' name='number'>
+      </div><br />
+
+      <input type='submit'>
+    </form>
+    <br>
+    <h3>Trains table</h3>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>NUMBER</th>
+        <th>TYPE</th>
+        <th>CREATED DATE</th>
+      </tr>
+      <% @trains_info.each do |info| %>
+      <tr>
+        <% hash = JSON.parse(info) %>
+        <td><%= hash['id'] %></td>
+        <td><%= hash['number'] %></td>
+        <td><%= hash['type'] %></td>
+        <td><%= hash['created_at'] %></td>
+      </tr>
+      <% end %>
+    </table>
+    <br /><br />
+    <a href='/'>Main</a>
+  </body>
+</html>

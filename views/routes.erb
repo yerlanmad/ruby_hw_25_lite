@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Railway application</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  </head>
+  <body>
+    <h3>Create route</h3>
+    <form action='routes' method='post'>
+    <div>
+      <label for="station1">First station:</label>
+      <select id="station1" name="station1">
+        <% @stations_info.each do |info| %>
+          <% hash = JSON.parse(info) %>
+        <option value=<%= hash['name'] %>><%= hash['name'] %></option>
+        <% end %>
+      </select>
+    </div><br />
+    
+    <div>
+      <label for="station2">Last station:</label>
+      <select id="station2" name="station2">
+        <% @stations_info.each do |info| %>
+          <% hash = JSON.parse(info) %>
+        <option value=<%= hash['name'] %>><%= hash['name'] %></option>
+        <% end %>
+      </select>
+    </div><br />
+
+    <input type='submit'>
+    </form>
+    <br>
+    <h3>Routes table</h3>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>CREATED DATE</th>
+      </tr>
+      <% @routes_info.each do |info| %>
+      <tr>
+        <% hash = JSON.parse(info) %>
+        <td><%= hash['id'] %></td>
+        <td><%= hash['name'] %></td>
+        <td><%= hash['created_at'] %></td>
+      </tr>
+      <% end %>
+    </table>
+    <br /><br />
+    <a href='/'>Main</a>
+  </body>
+</html>

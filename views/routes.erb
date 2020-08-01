@@ -18,21 +18,19 @@
     <h3>Create route</h3>
     <form action='routes' method='post'>
     <div>
-      <label for="station1">First station:</label>
-      <select id="station1" name="station1">
-        <% @stations_info.each do |info| %>
-          <% hash = JSON.parse(info) %>
-        <option value=<%= hash['name'] %>><%= hash['name'] %></option>
+      <label for="first">First station:</label>
+      <select id="first" name="first">
+        <% @stations.each do |station| %>
+        <option value=<%= station %>><%= station %></option>
         <% end %>
       </select>
     </div><br />
-    
+
     <div>
-      <label for="station2">Last station:</label>
-      <select id="station2" name="station2">
-        <% @stations_info.each do |info| %>
-          <% hash = JSON.parse(info) %>
-        <option value=<%= hash['name'] %>><%= hash['name'] %></option>
+      <label for="last">Last station:</label>
+      <select id="last" name="last">
+        <% @stations.each do |station| %>
+        <option value=<%= station %>><%= station %></option>
         <% end %>
       </select>
     </div><br />
@@ -48,12 +46,11 @@
         <th>NAME</th>
         <th>CREATED DATE</th>
       </tr>
-      <% @routes_info.each do |info| %>
+      <% @routes_info.each do |route| %>
       <tr>
-        <% hash = JSON.parse(info) %>
-        <td><%= hash['id'] %></td>
-        <td><%= hash['name'] %></td>
-        <td><%= hash['created_at'] %></td>
+        <td><%= route['id'] %></td>
+        <td><%= route['name'] %></td>
+        <td><%= route['created_at'] %></td>
       </tr>
       <% end %>
     </table>

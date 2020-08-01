@@ -42,13 +42,12 @@
         <th>TYPE</th>
         <th>CREATED DATE</th>
       </tr>
-      <% @trains_info.each do |info| %>
+      <% @trains_info.each do |train| %>
       <tr>
-        <% hash = JSON.parse(info) %>
-        <td><%= hash['id'] %></td>
-        <td><%= hash['number'] %></td>
-        <td><%= hash['type'] %></td>
-        <td><%= hash['created_at'] %></td>
+        <td><%= train['id'] %></td>
+        <td><%= train['number'] %></td>
+        <td><%= train['type'] %></td>
+        <td><%= train['created_at'] %></td>
       </tr>
       <% end %>
     </table>

@@ -3,12 +3,15 @@
 class Route
   include Validatable
 
-  attr_reader :stations, :name
+  attr_reader :id, :stations, :name, :created_at
 
-  def initialize(first_station, last_station)
-    @stations = [first_station, last_station]
-    @name = "#{first_station}-#{last_station}"
+  def initialize(opts)
+    @id = rand(36**8).to_s(36)
+    @stations = [opts[:first], opts[:last]]
+    @name = "#{opts[:first]}-#{opts[:last]}"
+    @created_at = Time.now
     validate
+    store_info if valid?
   end
 
   def add_station(station)
@@ -25,13 +28,17 @@ class Route
 
   private
 
+  def store_info
+    info = {"id": "#{id}", "name": "#{name}", "created_at": "#{created_at}"}
+    File.open('data/routes.txt', 'a+') { |file| file.puts(info.to_json) } 
+  end
+
   def validate
     super(stations)
     super(name)
     raise AttributePresentError if stations.first == stations.last
+    self.valid = true
   rescue AttributeSizeError, AttributePresentError => e
     self.valid = false
-  else
-    self.valid = true
   end
 end

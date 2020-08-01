@@ -32,12 +32,11 @@
         <th>NAME</th>
         <th>CREATED DATE</th>
       </tr>
-      <% @stations_info.each do |info| %>
+      <% @stations_info.each do |station| %>
       <tr>
-        <% hash = JSON.parse(info) %>
-        <td><%= hash['id'] %></td>
-        <td><%= hash['name'] %></td>
-        <td><%= hash['created_at'] %></td>
+        <td><%= station['id'] %></td>
+        <td><%= station['name'] %></td>
+        <td><%= station['created_at'] %></td>
       </tr>
       <% end %>
     </table>
